@@ -1,6 +1,7 @@
 package unittest.model;
 
 import model.Player;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,5 +32,9 @@ public class PlayerUnitTest {
         assertEquals(1, player.getAttempts());
     }
 
-
+    @After
+    public void tearDown(){
+        player = null;
+        assertNull(player);
+    }
 }
