@@ -1,8 +1,5 @@
 package model;
 
-/**
- * Created by Guilherme on 10/03/2016.
- */
 public class Game {
 
     private String secretWord;

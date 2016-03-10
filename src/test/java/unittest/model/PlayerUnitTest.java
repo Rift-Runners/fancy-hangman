@@ -13,7 +13,7 @@ public class PlayerUnitTest {
 
     @Before
     public void setUp(){
-        player = new Player("William");
+        this.player = new Player("William");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class PlayerUnitTest {
 
     @After
     public void tearDown(){
-        player = null;
+        this.player = null;
         assertNull(player);
     }
 }
