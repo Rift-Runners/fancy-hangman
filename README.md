@@ -2,8 +2,8 @@
 ---
 ## Introduction
 
-This project main purpose is learning how to build a **hangman game** in a *"fancy" style*.
-Meaning: Trying to use (most of time) XP as the development technology and a lot of frameworks.
+This project main purpose is to learn how to build a **hangman game** in a *"fancy" style*.
+Meaning: An attempt to use (most of time) eXtreme Programming as the development technology with a **lot** of frameworks.
 
 ---
 ### Frameworks/Tools
