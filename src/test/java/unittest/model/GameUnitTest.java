@@ -14,7 +14,7 @@ public class GameUnitTest {
 
     @Before
     public void setUp(){
-        this.game = new Game("Apple", new Player("William"));
+        this.game = new Game("APPLE", new Player("William"));
     }
 
     @Test
@@ -29,12 +29,7 @@ public class GameUnitTest {
 
     @Test
     public void testGameHasASecretWord(){
-        assertEquals("Apple", game.getSecretWord());
-    }
-
-    @Test
-    public void testGameIsRunning(){
-        assertEquals(true, game.isRunning());
+        assertEquals("APPLE", game.getSecretWord());
     }
 
     @After

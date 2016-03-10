@@ -15,7 +15,7 @@ public class GameControllerUnitTest {
     @Before
     public void setUp(){
         Player player = new Player("William");
-        Game game = new Game("Apple", player);
+        Game game = new Game("APPLE", player);
         this.gameController = new GameController(game);
     }
 
@@ -27,6 +27,34 @@ public class GameControllerUnitTest {
     @Test
     public void testGameControllerHasAGame(){
         assertNotNull(gameController.getGame());
+    }
+
+    @Test
+    public void testGameControllerHasAExploreWord(){
+        assertNotNull(gameController.getExploreWord());
+    }
+
+    @Test
+    public void testGameHasUsedLetters(){
+        gameController.guessLetter('Z');
+        assertEquals("Z", gameController.getUsedLetters());
+    }
+
+    @Test
+    public void testGameHasNotUsedLetters(){
+        gameController.guessLetter('A');
+        assertEquals("", gameController.getUsedLetters());
+    }
+
+    @Test
+    public void testGameBuiltExploreWord(){
+        assertEquals("_____", gameController.getExploreWord());
+    }
+
+    @Test
+    public void testGameRevealedLetter(){
+        gameController.guessLetter('E');
+        assertEquals("____E",gameController.getExploreWord());
     }
 
     @After
