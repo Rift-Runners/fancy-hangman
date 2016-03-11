@@ -11,12 +11,12 @@ public class GameController {
 
     public GameController(Game game) {
         this.game = game;
-        this.exploreWord = buildExploreWord(this.game);
+        this.exploreWord = buildExploreWord();
         this.usedLetters = "";
         this.running = true;
     }
 
-    private String buildExploreWord(Game game) {
+    private String buildExploreWord() {
         StringBuilder buildRevealedWord = new StringBuilder();
         for (int i = 0; i < game.getSecretWord().length(); i++) {
             buildRevealedWord.append("_");
@@ -40,11 +40,15 @@ public class GameController {
             }
         }
         if(!hasFound){
-            usedLetters += letter;
+            usedLetters += letter+" ";
             game.getPlayer().hasAttempted();
         }
     }
 
+    //A situação de attempts ser maior "possivelmente" nunca acontecerá, == 6 ou >= 6 (tem diferença?)
+    public boolean isDead(){
+        return (game.getPlayer().getAttempts() >= 6);
+    }
 
     public Game getGame() {
         return game;

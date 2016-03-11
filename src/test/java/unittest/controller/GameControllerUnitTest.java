@@ -37,7 +37,7 @@ public class GameControllerUnitTest {
     @Test
     public void testGameHasUsedLetters(){
         gameController.guessLetter('Z');
-        assertEquals("Z", gameController.getUsedLetters());
+        assertEquals("Z ", gameController.getUsedLetters());
     }
 
     @Test
@@ -62,6 +62,4 @@ public class GameControllerUnitTest {
         this.gameController = null;
         assertNull(gameController);
     }
-
-
 }
