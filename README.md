@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/matuella/fancy-hangman.svg?branch=master)](https://travis-ci.org/matuella/fancy-hangman)
+[![Coverage Status](https://coveralls.io/repos/github/matuella/fancy-hangman/badge.svg?branch=master)](https://coveralls.io/github/matuella/fancy-hangman?branch=master)
 
 # Fancy Hangman
 ---
@@ -12,6 +13,7 @@ Meaning: Trying to use (most of time) XP as the development technology and a lot
 
 - [Maven](https://maven.apache.org/)
 - [Travis-CI](https://travis-ci.org/matuella/fancy-hangman)
+- [Coveralls](https://coveralls.io/github/matuella/fancy-hangman)
 
 ---
 ### Team
