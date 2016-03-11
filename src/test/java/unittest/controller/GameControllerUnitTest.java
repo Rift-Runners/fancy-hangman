@@ -41,9 +41,10 @@ public class GameControllerUnitTest {
     }
 
     @Test
-    public void testGameHasNotUsedLetters(){
-        gameController.guessLetter('A');
-        assertEquals("", gameController.getUsedLetters());
+    public void testRepeatUsedLetter(){
+        gameController.guessLetter('Z');
+        gameController.guessLetter('Z');
+        assertEquals("Z ", gameController.getUsedLetters());
     }
 
     @Test

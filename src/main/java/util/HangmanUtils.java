@@ -1,6 +1,7 @@
 package util;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class HangmanUtils {
 
@@ -16,5 +17,17 @@ public class HangmanUtils {
                         "MELON","LEMON","WATERMELON","ORANGE"};
         Random randomizer = new Random();
         return wordDictionary[randomizer.nextInt(wordDictionary.length)];
+    }
+
+    public String stringReader(Object o){
+        System.out.println(o);
+        Scanner s = new Scanner(System.in);
+        return s.nextLine();
+    }
+
+    public char charReader(Object o){
+        System.out.println(o);
+        Scanner s = new Scanner(System.in);
+        return s.next().charAt(0);
     }
 }

@@ -40,14 +40,20 @@ public class GameController {
             }
         }
         if(!hasFound){
-            usedLetters += letter+" ";
             game.getPlayer().hasAttempted();
+        }
+        if(!usedLetters.contains(""+letter)){
+            usedLetters += letter+" ";
         }
     }
 
     //A situação de attempts ser maior "possivelmente" nunca acontecerá, == 6 ou >= 6 (tem diferença?)
-    public boolean isDead(){
+    public boolean playerIsDead(){
         return (game.getPlayer().getAttempts() >= 6);
+    }
+
+    public boolean playerIsWinner(){
+        return (game.getSecretWord().equals(exploreWord));
     }
 
     public Game getGame() {
@@ -64,5 +70,9 @@ public class GameController {
 
     public boolean isRunning() {
         return running;
+    }
+
+    public void stopRunning(){
+        this.running = false;
     }
 }
