@@ -12,8 +12,9 @@ Meaning: Trying to use (most of time) XP as the development technology and a lot
 ### Frameworks/Tools
 
 - [Maven](https://maven.apache.org/)
-- [Travis-CI](https://travis-ci.org/matuella/fancy-hangman)
-- [Coveralls](https://coveralls.io/github/matuella/fancy-hangman)
+- [Mockito](https://mockito.org/)
+- [Travis-CI](https://travis-ci.org/) / [Project-Travis](https://travis-ci.org/matuella/fancy-hangman)
+- [Coveralls](https://coveralls.io/) / [Project-Coveralls](https://coveralls.io/github/matuella/fancy-hangman)
 
 ---
 ### Team
