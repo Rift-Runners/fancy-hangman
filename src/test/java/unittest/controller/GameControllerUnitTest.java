@@ -48,6 +48,34 @@ public class GameControllerUnitTest {
     }
 
     @Test
+    public void testPlayerIsAlive(){
+        gameController.getGame().getPlayer().hasAttempted();
+        assertFalse(gameController.playerIsDead());
+    }
+
+    @Test
+    public void testPlayerIsDead(){
+        for (int i = 0; i < 6; i++) {
+            gameController.getGame().getPlayer().hasAttempted();
+        }
+        assertTrue(gameController.playerIsDead());
+    }
+
+    @Test
+    public void testPlayerNotAWinner(){
+        assertFalse(gameController.playerIsWinner());
+    }
+
+    @Test
+    public void testPlayerHasWon(){
+        gameController.guessLetter('A');
+        gameController.guessLetter('P');
+        gameController.guessLetter('L');
+        gameController.guessLetter('E');
+        assertTrue(gameController.playerIsWinner());
+    }
+
+    @Test
     public void testGameBuiltExploreWord(){
         assertEquals("_____", gameController.getExploreWord());
     }

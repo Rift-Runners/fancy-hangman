@@ -22,7 +22,7 @@ public class HangmanUtilsUnitTest {
 
     @Test
     public void testInputIsValid(){
-        assertEquals(true, hangmanUtils.isAValidLetter('A'));
+        assertTrue(hangmanUtils.isAValidLetter('A'));
     }
 
     @Test
