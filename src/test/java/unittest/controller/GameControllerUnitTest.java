@@ -86,6 +86,17 @@ public class GameControllerUnitTest {
         assertEquals("____E",gameController.getExploreWord());
     }
 
+    @Test
+    public void testGameIsRunning(){
+        assertTrue(gameController.isRunning());
+    }
+
+    @Test
+    public void testGameStoppedRunning(){
+        gameController.stopRunning();
+        assertFalse(gameController.isRunning());
+    }
+
     @After
     public void tearDown(){
         this.gameController = null;
