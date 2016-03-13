@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Game;
 import model.Player;
+import util.AlertBox;
 import util.HangmanUtils;
 
 import java.util.Scanner;
@@ -22,44 +23,22 @@ import java.util.Scanner;
 public class GameView{
 
     private GameController gameController;
-    private HangmanUtils hangmanUtils;
 
     public GameView(GameController gameController){
         this.gameController = gameController;
-        this.hangmanUtils = new HangmanUtils();
     }
 
     public GameController getGameController() {
         return gameController;
     }
 
-    public void playGame(){
-        while(gameController.isRunning()){
-            System.out.println("Palavra: "+gameController.getExploreWord()+"\n" +
-                    "Tentativas: "+gameController.getGame().getPlayer().getAttempts()+"/6\n" +
-                    "Letras utilizadas: "+gameController.getUsedLetters()+"\n"+
-                    "Dica: É uma fruta.");
-
-            //char letterInput = Character.toUpperCase(hangmanUtils.charReader("Digite uma letra: "));
-
-//            if(hangmanUtils.isAValidLetter(letterInput)){
-//                gameController.guessLetter(letterInput);
-//            } else{
-//                System.out.println("Você digitou um caracter inválido!");
-//            }
-
-
-        }
-
-    }
-
     public void guessTurn(){
         if(gameController.playerIsDead()){
-            hangmanUtils.alertBox("Você perdeu!", "Aceita que dói menos.");
+            new AlertBox().display("You lost!", "Face it, you just sucks.");
             gameController.stopRunning();
         }
         if(gameController.playerIsWinner()){
-            hangmanUtils.alertBox("Você ganhou!", "Parabéns, perdeu alguns segundos de sua vida!!");
+            new AlertBox().display("You won!", "Grats you won... absolutely nothing!");
             gameController.stopRunning();
         }
     }

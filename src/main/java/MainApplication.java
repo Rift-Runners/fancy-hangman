@@ -8,12 +8,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Game;
 import model.Player;
+import util.AlertBox;
+import util.ConfirmBox;
 import util.HangmanUtils;
+import util.InputBox;
 import view.GameView;
 
 /**
@@ -33,51 +37,63 @@ public class MainApplication extends Application implements EventHandler<ActionE
     }
 
     public void controllerSetUp(){
-        HangmanUtils hangmanUtils = new HangmanUtils();
-        Player player = new Player(hangmanUtils.stringReader("Digite seu nome:"));
-        Game game = new Game(hangmanUtils.randomWord(), player);
+        Player player = new Player(new InputBox().display("Nome", "Digite seu nome:"));
+        Game game = new Game(new HangmanUtils().randomWord(), player);
         GameController gameController = new GameController(game);
         this.gameView = new GameView(gameController);
     }
 
     public Scene initMainLayout(){
-        //Player name, used Letters and lives line
-        HBox firstLine = new HBox(10);
+        //Player name, used Letters and lives top layout
+        HBox topLayout = new HBox(10);
         Label playerNameLabel = new Label("Player:");
         playerName = new Label(gameView.getGameController().getGame().getPlayer().getName());
         Label usedLettersLabel = new Label("Used Letters:");
         usedLetters = new Label(gameView.getGameController().getUsedLetters());
         Label playerLivesLabel = new Label("Lives:");
         playerLives = new Label(String.valueOf(gameView.getGameController().getGame().getPlayer().getAttempts()));
-        firstLine.getChildren().addAll(playerNameLabel,playerName,usedLettersLabel,usedLetters,playerLivesLabel,playerLives);
+        topLayout.getChildren().addAll(playerNameLabel,playerName,usedLettersLabel,usedLetters,playerLivesLabel,playerLives);
 
-        //Secret word line
+        //Secret word, lettersButtons, tip center layout
+        VBox centerLayout = new VBox(20);
         secretWord = new Label(gameView.getGameController().getExploreWord());
-
-        //Letters Buttons lines
-        HBox lettersLine = new HBox(10);
+        //Letters Buttons
+        HBox lettersLine1 = new HBox(10);
+        HBox lettersLine2 = new HBox(10);
+        HBox lettersLine3 = new HBox(10);
         letterBtns = new Button[26];
         for (int i = 0; i < LETTERS.length(); i++) {
             letterBtns[i] = new Button(LETTERS.substring(i,i+1));
             letterBtns[i].setOnAction(this);
+            if(i<9){
+                lettersLine1.getChildren().add(letterBtns[i]);
+            } else if(i<18){
+                lettersLine2.getChildren().add(letterBtns[i]);
+            } else{
+                lettersLine3.getChildren().add(letterBtns[i]);
+            }
         }
-        lettersLine.getChildren().addAll(letterBtns);
-
-        //Only tip button in the line, no need to put it in a hbox
         Button tip = new Button("Tip");
-        //Only image in the line, no need to put it in a hbox
+        centerLayout.getChildren().addAll(secretWord, lettersLine1,lettersLine2,lettersLine3, tip);
+        centerLayout.setAlignment(Pos.CENTER);
 
+        //Only image in the left layout, no need to put it in a hbox
         playerImage = new ImageView(new Image("images/0-6.png"));
 
-        //Column to order the lines (in order)
-        VBox gameColumn = new VBox(20);
-        gameColumn.getChildren().addAll(firstLine, secretWord, lettersLine, tip, playerImage);
-        gameColumn.setAlignment(Pos.CENTER);
+        //Main layout
+        BorderPane mainLayout = new BorderPane();
+        mainLayout.setTop(topLayout);
+        mainLayout.setCenter(centerLayout);
+        mainLayout.setRight(playerImage);
 
-        return new Scene(gameColumn, 900, 600);
+        return new Scene(mainLayout, 900, 600);
     }
+
     public void imageUpdate(){
         switch(gameView.getGameController().getGame().getPlayer().getAttempts()){
+            case 0:
+                playerImage.setImage(new Image("images/0-6.png"));
+                break;
             case 1:
                 playerImage.setImage(new Image("images/1-6.png"));
                 break;
@@ -106,11 +122,27 @@ public class MainApplication extends Application implements EventHandler<ActionE
         playerLives.setText(String.valueOf(gameView.getGameController().getGame().getPlayer().getAttempts()));
     }
 
+    public void restartGame(){
+        controllerSetUp();
+        turnComponentsUpdate();
+        imageUpdate();
+    }
+
+    public void closeProgram(){
+        if(new ConfirmBox().display("Close Game", "Do you really want to close the game?")){
+            window.close();
+        }
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         controllerSetUp();
         window = primaryStage;
         window.setScene(initMainLayout());
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            closeProgram();
+        });
         window.setTitle("Fancy Hangman");
         window.show();
     }
@@ -124,8 +156,9 @@ public class MainApplication extends Application implements EventHandler<ActionE
             imageUpdate();
             gameView.guessTurn();
         } else {
-            HangmanUtils hangmanUtils = new HangmanUtils();
-            hangmanUtils.alertBox("Game over", "Please, restart the application.");
+            if(new ConfirmBox().display("Game is over", "Want to start a new game?")){
+                restartGame();
+            }
         }
     }
 }
