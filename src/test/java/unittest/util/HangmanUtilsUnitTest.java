@@ -16,16 +16,6 @@ public class HangmanUtilsUnitTest {
     }
 
     @Test
-    public void testInputVerifierExists(){
-        assertNotNull(this.hangmanUtils);
-    }
-
-    @Test
-    public void testInputIsValid(){
-        assertTrue(hangmanUtils.isAValidLetter('A'));
-    }
-
-    @Test
     public void testRandomizedAWord(){
         assertNotNull(hangmanUtils.randomWord());
     }

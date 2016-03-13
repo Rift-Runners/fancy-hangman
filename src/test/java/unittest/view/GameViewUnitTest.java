@@ -30,10 +30,6 @@ public class GameViewUnitTest {
         assertNotNull(gameView.getGameController());
     }
 
-    @Test
-    public void test(){
-
-    }
 
     @After
     public void tearDown(){
