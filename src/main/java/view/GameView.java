@@ -40,22 +40,27 @@ public class GameView{
                     "Letras utilizadas: "+gameController.getUsedLetters()+"\n"+
                     "Dica: É uma fruta.");
 
-            char letterInput = Character.toUpperCase(hangmanUtils.charReader("Digite uma letra: "));
+            //char letterInput = Character.toUpperCase(hangmanUtils.charReader("Digite uma letra: "));
 
-            if(hangmanUtils.isAValidLetter(letterInput)){
-                gameController.guessLetter(letterInput);
-            } else{
-                System.out.println("Você digitou um caracter inválido!");
-            }
+//            if(hangmanUtils.isAValidLetter(letterInput)){
+//                gameController.guessLetter(letterInput);
+//            } else{
+//                System.out.println("Você digitou um caracter inválido!");
+//            }
 
-            if(gameController.playerIsDead()){
-                System.out.println("Você morreu!");
-                gameController.stopRunning();
-            }
-            if(gameController.playerIsWinner()){
-                System.out.println("Você ganhou!");
-                gameController.stopRunning();
-            }
+
+        }
+
+    }
+
+    public void guessTurn(){
+        if(gameController.playerIsDead()){
+            hangmanUtils.alertBox("Você perdeu!", "Aceita que dói menos.");
+            gameController.stopRunning();
+        }
+        if(gameController.playerIsWinner()){
+            hangmanUtils.alertBox("Você ganhou!", "Parabéns, perdeu alguns segundos de sua vida!!");
+            gameController.stopRunning();
         }
     }
 }

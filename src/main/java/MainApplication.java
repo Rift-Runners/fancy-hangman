@@ -1,6 +1,7 @@
 import controller.GameController;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,12 +36,19 @@ public class MainApplication extends Application{
         this.gameView = new GameView(gameController);
     }
 
-    public Scene initComponents(){
-        //Player name line
-        HBox playerNameLine = new HBox(5);
-        Label playerLabel = new Label("Player:");
-        Text player = new Text(gameView.getGameController().getGame().getPlayer().getName());
-        playerNameLine.getChildren().addAll(playerLabel,player);
+    public Scene initMainLayout(){
+        //Player name, used Letters and lives line
+        HBox firstLine = new HBox(10);
+        Label playerNameLabel = new Label("Player:");
+        Label playerName = new Label(gameView.getGameController().getGame().getPlayer().getName());
+        Label usedLettersLabel = new Label("Used Letters:");
+        Label usedLetters = new Label(gameView.getGameController().getUsedLetters());
+        Label playerLivesLabel = new Label("Lives:");
+        Label playerLives = new Label(String.valueOf(gameView.getGameController().getGame().getPlayer().getAttempts()));
+        firstLine.getChildren().addAll(playerNameLabel,playerName,usedLettersLabel,usedLetters,playerLivesLabel,playerLives);
+
+        //Secret word line
+        Label secretWord = new Label(gameView.getGameController().getExploreWord());
 
         //Letters Buttons lines
         HBox lettersLine = new HBox(10);
@@ -48,7 +56,7 @@ public class MainApplication extends Application{
         for (int i = 0; i < LETTERS.length(); i++) {
             letterBtns[i] = new Button(LETTERS.substring(i,i+1));
             final String buttonText = letterBtns[i].getText();
-            letterBtns[i].setOnAction(e -> System.out.println("My value is: "+buttonText));
+            letterBtns[i].setOnAction(e -> gameView.getGameController().guessLetter(buttonText.charAt(0)));
         }
         lettersLine.getChildren().addAll(letterBtns);
 
@@ -57,7 +65,8 @@ public class MainApplication extends Application{
 
         //Column to order the lines (in order)
         VBox gameColumn = new VBox(20);
-        gameColumn.getChildren().addAll(playerNameLine,lettersLine, tip);
+        gameColumn.getChildren().addAll(firstLine,secretWord,lettersLine, tip);
+        gameColumn.setAlignment(Pos.CENTER);
 
         return new Scene(gameColumn, 600, 500);
     }
@@ -66,8 +75,8 @@ public class MainApplication extends Application{
     public void start(Stage primaryStage) throws Exception {
         controllerSetUp();
         window = primaryStage;
-        primaryStage.setTitle("Fancy Hangman");
-        primaryStage.setScene(initComponents());
-        primaryStage.show();
+        window.setScene(initMainLayout());
+        window.setTitle("Fancy Hangman");
+        window.show();
     }
 }
