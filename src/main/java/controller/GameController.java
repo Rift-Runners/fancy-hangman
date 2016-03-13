@@ -28,8 +28,11 @@ public class GameController {
     public void guessLetter(char letter){
         boolean hasFound = false;
         for (int i = 0; i < game.getSecretWord().length(); i++) {
-            char testLetter = game.getSecretWord().charAt(i); //Apple
-            if(testLetter == letter){
+            char testLetter = game.getSecretWord().charAt(i);
+            if(usedLetters.contains(""+letter)){
+                hasFound = true;
+            }
+            else if(testLetter == letter){
                 String temporaryExploreWord = exploreWord;
                 if(game.getSecretWord().length()-1 == i) {
                     exploreWord = temporaryExploreWord.substring(0,i)+testLetter;

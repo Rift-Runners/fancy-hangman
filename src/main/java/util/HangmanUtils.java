@@ -15,19 +15,12 @@ public class HangmanUtils {
         String[] wordDictionary = new String[]
                 {"APPLE", "BANANA","PINEAPPLE",
                         "MELON","LEMON","WATERMELON","ORANGE"};
-        Random randomizer = new Random();
-        return wordDictionary[randomizer.nextInt(wordDictionary.length)];
+        return wordDictionary[new Random().nextInt(wordDictionary.length)];
     }
 
     public String stringReader(Object o){
         System.out.println(o);
         Scanner s = new Scanner(System.in);
         return s.nextLine();
-    }
-
-    public char charReader(Object o){
-        System.out.println(o);
-        Scanner s = new Scanner(System.in);
-        return s.next().charAt(0);
     }
 }
