@@ -1,5 +1,6 @@
 package util;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,6 +36,7 @@ public class ConfirmBox {
         });
 
         VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20));
         layout.getChildren().addAll(label, yesBtn, noBtn);
         layout.setAlignment(Pos.CENTER);
 

@@ -34,7 +34,7 @@ public class GameView{
 
     public void guessTurn(){
         if(gameController.playerIsDead()){
-            new AlertBox().display("You lost!", "Face it, you just sucks.");
+            new AlertBox().display("You lost!", "Face it, you just suck.");
             gameController.stopRunning();
         }
         if(gameController.playerIsWinner()){
