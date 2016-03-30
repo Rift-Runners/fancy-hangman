@@ -20,6 +20,16 @@ Meaning: Trying to use (most of time) XP as the development technology and a lot
 ### Team
 
 | Position      | Name                                              |
-| ------------- |:-------------------------------------------------:|
+|:-------------:|:-------------------------------------------------:|
 | Developer     | [Guilherme Matuella](https://github.com/matuella) |
 | Developer     | [Diego Peixoto](https://github.com/dvpeixoto)     |
+
+---
+### Branches names meaning
+
+| Term         | Meaning                                           |
+|:------------:|:-------------------------------------------------:|
+|ft            | Feature                                           |
+|rf            | Refactor                                          |
+|fix           | Fix/Hotfix                                        |
+
