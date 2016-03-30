@@ -1,26 +1,28 @@
 package util;
 
+import model.SecretWord;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
-import java.util.Scanner;
 
 public class HangmanUtils {
 
-    public HangmanUtils(){}
+    private Map<Integer, SecretWord> wordsDictionary;
+
+    public HangmanUtils(){
+        this.wordsDictionary = wordsReader();
+    }
 
     public boolean isAValidLetter(char input){
         return Character.isLetter(input);
     }
 
-    public String randomWord(){
-        String[] wordDictionary = new String[]
-                {"APPLE", "BANANA","PINEAPPLE",
-                        "MELON","LEMON","WATERMELON","ORANGE"};
-        return wordDictionary[new Random().nextInt(wordDictionary.length)];
+    public SecretWord randomWord(){
+        return wordsDictionary.get(new Random().nextInt(wordsDictionary.size()));
     }
 
-    public String stringReader(Object o){
-        System.out.println(o);
-        Scanner s = new Scanner(System.in);
-        return s.nextLine();
+    public HashMap<Integer, SecretWord> wordsReader(){
+
     }
 }

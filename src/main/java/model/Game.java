@@ -2,16 +2,16 @@ package model;
 
 public class Game {
 
-    private String secretWord;
+    private SecretWord secretWord;
     private Player player;
 
 
-    public Game(String secretWord, Player player){
+    public Game(SecretWord secretWord, Player player){
         this.secretWord = secretWord;
         this.player = player;
     }
 
-    public String getSecretWord() {
+    public SecretWord getSecretWord() {
         return secretWord;
     }
 

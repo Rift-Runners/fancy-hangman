@@ -20,6 +20,8 @@ import util.HangmanUtils;
 import util.InputBox;
 import view.GameView;
 
+import java.util.HashMap;
+
 /**
  * Created by Guilherme on 12/03/2016.
  */

@@ -3,6 +3,7 @@ package unittest.controller;
 import controller.GameController;
 import model.Game;
 import model.Player;
+import model.SecretWord;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,7 @@ public class GameControllerUnitTest {
     @Before
     public void setUp(){
         Player player = new Player("William");
-        Game game = new Game("APPLE", player);
+        Game game = new Game(new SecretWord("APPLE", "APPLE TIP"), player);
         this.gameController = new GameController(game);
     }
 

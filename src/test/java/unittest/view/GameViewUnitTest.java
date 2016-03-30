@@ -3,6 +3,7 @@ package unittest.view;
 import controller.GameController;
 import model.Game;
 import model.Player;
+import model.SecretWord;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +17,7 @@ public class GameViewUnitTest {
 
     @Before
     public void setUp(){
-        GameController gameController = new GameController(new Game("APPLE",new Player("William")));
+        GameController gameController = new GameController(new Game(new SecretWord("APPLE", "APPLE TIP"),new Player("William")));
         this.gameView = new GameView(gameController);
     }
 
@@ -28,11 +29,6 @@ public class GameViewUnitTest {
     @Test
     public void testGameViewHasAGameController(){
         assertNotNull(gameView.getGameController());
-    }
-
-    @Test
-    public void test(){
-
     }
 
     @After
