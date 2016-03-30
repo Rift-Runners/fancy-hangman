@@ -18,7 +18,7 @@ public class GameController {
 
     private String buildExploreWord() {
         StringBuilder buildRevealedWord = new StringBuilder();
-        for (int i = 0; i < game.getSecretWord().length(); i++) {
+        for (int i = 0; i < game.getSecretWord().getWord().length(); i++) {
             buildRevealedWord.append("_");
         }
         return buildRevealedWord.toString();
@@ -27,14 +27,14 @@ public class GameController {
     //refatorar
     public void guessLetter(char letter){
         boolean hasFound = false;
-        for (int i = 0; i < game.getSecretWord().length(); i++) {
-            char testLetter = game.getSecretWord().charAt(i);
+        for (int i = 0; i < game.getSecretWord().getWord().length(); i++) {
+            char testLetter = game.getSecretWord().getWord().charAt(i);
             if(usedLetters.contains(""+letter)){
                 hasFound = true;
             }
             else if(testLetter == letter){
                 String temporaryExploreWord = exploreWord;
-                if(game.getSecretWord().length()-1 == i) {
+                if(game.getSecretWord().getWord().length()-1 == i) {
                     exploreWord = temporaryExploreWord.substring(0,i)+testLetter;
                 }else {
                     exploreWord = temporaryExploreWord.substring(0,i)+testLetter+temporaryExploreWord.substring(i+1);
