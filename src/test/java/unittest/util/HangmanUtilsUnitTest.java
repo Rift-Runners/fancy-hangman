@@ -30,6 +30,16 @@ public class HangmanUtilsUnitTest {
     public void testRandomizedAWord(){
         assertNotNull(hangmanUtils.randomWord());
     }
+    
+    @Test
+    public void testMapHasAWord() throws IOException{
+        assertEquals("apple", hangmanUtils.wordsReader().get(0).getWord());
+    }
+    
+    @Test
+    public void testMapHasATip() throws IOException{
+        assertEquals("red colored and round-shaped fruit", hangmanUtils.wordsReader().get(0).getTip());
+    }
 
     @After
     public void tearDown(){

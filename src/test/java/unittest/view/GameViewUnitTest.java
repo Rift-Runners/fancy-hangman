@@ -17,7 +17,7 @@ public class GameViewUnitTest {
 
     @Before
     public void setUp(){
-        GameController gameController = new GameController(new Game(new SecretWord("APPLE", "APPLE TIP"),new Player("William")));
+        GameController gameController = new GameController(new Game(new SecretWord("apple", "red colored and round-shaped fruit"),new Player("William")));
         this.gameView = new GameView(gameController);
     }
 

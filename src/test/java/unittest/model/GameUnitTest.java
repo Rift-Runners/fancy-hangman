@@ -14,32 +14,42 @@ public class GameUnitTest {
     private Game game;
 
     @Before
-    public void setUp(){
-        this.game = new Game(new SecretWord("apple", "apple tip"), new Player("William"));
+    public void setUp() {
+        this.game = new Game(new SecretWord("APPLE", "red colored and round-shaped fruit"), new Player("William"));
     }
 
     @Test
-    public void testGameExists(){
+    public void testGameExists() {
         assertNotNull(game);
     }
 
     @Test
-    public void testGameHasAPlayer(){
+    public void testGameHasAPlayer() {
         assertNotNull(game.getPlayer());
     }
 
     @Test
-    public void testGameSecretWordHasAWord(){
-        assertEquals("apple", game.getSecretWord().getWord());
+    public void testGameSecretWordHasAWord() {
+        assertNotNull(game.getSecretWord().getWord());
     }
-    
-        @Test
-    public void testGameSecretWordHasATip(){
-        assertEquals("apple tip", game.getSecretWord().getTip());
+
+    @Test
+    public void testGameSecretWordHasAWordTip() {
+        assertNotNull(game.getSecretWord().getTip());
+    }
+
+    @Test
+    public void testGameSecretWordHasTheRightWord() {
+        assertEquals("APPLE", game.getSecretWord().getWord());
+    }
+
+    @Test
+    public void testGameSecretWordHasTheRightWordTip() {
+        assertEquals("red colored and round-shaped fruit", game.getSecretWord().getTip());
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         this.game = null;
         assertNull(game);
     }

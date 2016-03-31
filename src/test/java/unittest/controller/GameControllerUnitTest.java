@@ -14,47 +14,47 @@ public class GameControllerUnitTest {
     private GameController gameController;
 
     @Before
-    public void setUp(){
-        Game game = new Game(new SecretWord("apple", "apple tip"), new Player("William"));
+    public void setUp() {
+        Game game = new Game(new SecretWord("apple", "red colored and round-shaped fruit"), new Player("William"));
         this.gameController = new GameController(game);
     }
 
     @Test
-    public void testGameControllerExists(){
+    public void testGameControllerExists() {
         assertNotNull(gameController);
     }
 
     @Test
-    public void testGameControllerHasAGame(){
+    public void testGameControllerHasAGame() {
         assertNotNull(gameController.getGame());
     }
 
     @Test
-    public void testGameControllerHasAExploreWord(){
+    public void testGameControllerHasAExploreWord() {
         assertNotNull(gameController.getExploreWord());
     }
 
     @Test
-    public void testGameHasUsedLetters(){
+    public void testGameHasUsedLetters() {
         gameController.guessLetter('Z');
         assertEquals("Z ", gameController.getUsedLetters());
     }
 
     @Test
-    public void testRepeatUsedLetter(){
+    public void testRepeatUsedLetter() {
         gameController.guessLetter('Z');
         gameController.guessLetter('Z');
         assertEquals("Z ", gameController.getUsedLetters());
     }
 
     @Test
-    public void testPlayerIsAlive(){
+    public void testPlayerIsAlive() {
         gameController.getGame().getPlayer().hasAttempted();
         assertFalse(gameController.playerIsDead());
     }
 
     @Test
-    public void testPlayerIsDead(){
+    public void testPlayerIsDead() {
         for (int i = 0; i < 6; i++) {
             gameController.getGame().getPlayer().hasAttempted();
         }
@@ -62,12 +62,12 @@ public class GameControllerUnitTest {
     }
 
     @Test
-    public void testPlayerNotAWinner(){
+    public void testPlayerNotAWinner() {
         assertFalse(gameController.playerIsWinner());
     }
 
     @Test
-    public void testPlayerHasWon(){
+    public void testPlayerHasWon() {
         gameController.guessLetter('A');
         gameController.guessLetter('P');
         gameController.guessLetter('L');
@@ -76,29 +76,29 @@ public class GameControllerUnitTest {
     }
 
     @Test
-    public void testGameBuiltExploreWord(){
+    public void testGameBuiltExploreWord() {
         assertEquals("_____", gameController.getExploreWord());
     }
 
     @Test
-    public void testGameRevealedLetter(){
+    public void testGameRevealedLetter() {
         gameController.guessLetter('E');
-        assertEquals("____E",gameController.getExploreWord());
+        assertEquals("____E", gameController.getExploreWord());
     }
 
     @Test
-    public void testGameIsRunning(){
+    public void testGameIsRunning() {
         assertTrue(gameController.isRunning());
     }
 
     @Test
-    public void testGameStoppedRunning(){
+    public void testGameStoppedRunning() {
         gameController.stopRunning();
         assertFalse(gameController.isRunning());
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         this.gameController = null;
         assertNull(gameController);
     }

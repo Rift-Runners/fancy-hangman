@@ -56,7 +56,7 @@ public class GameController {
     }
 
     public boolean playerIsWinner(){
-        return (game.getSecretWord().equals(exploreWord));
+        return (game.getSecretWord().getWord().equals(exploreWord));
     }
 
     public Game getGame() {
