@@ -32,7 +32,7 @@ public class HangmanUtils {
         Object[] wordsAndTips = Files.lines(Paths.get(new File("").getAbsolutePath().concat("\\src\\main\\resources"), "wordsList.txt")).toArray();       
         for (Object wordOrTip : wordsAndTips) {
             String[] parsedLine = ((String) wordOrTip).split(";", 2);
-            wordsMap.put(cont++, new SecretWord(parsedLine[0], parsedLine[1].replace(";", "")));
+            wordsMap.put(cont++, new SecretWord(parsedLine[0].toUpperCase(), parsedLine[1].replace(";", "")));
         }
         return wordsMap;
     }

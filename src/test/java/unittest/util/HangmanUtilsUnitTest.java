@@ -33,7 +33,7 @@ public class HangmanUtilsUnitTest {
     
     @Test
     public void testMapHasAWord() throws IOException{
-        assertEquals("apple", hangmanUtils.wordsReader().get(0).getWord());
+        assertEquals("APPLE", hangmanUtils.wordsReader().get(0).getWord());
     }
     
     @Test

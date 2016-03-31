@@ -15,7 +15,7 @@ public class GameControllerUnitTest {
 
     @Before
     public void setUp() {
-        Game game = new Game(new SecretWord("apple", "red colored and round-shaped fruit"), new Player("William"));
+        Game game = new Game(new SecretWord("APPLE", "red colored and round-shaped fruit"), new Player("William"));
         this.gameController = new GameController(game);
     }
 
