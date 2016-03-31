@@ -29,7 +29,7 @@ public class HangmanUtils {
     public Map<Integer, SecretWord> wordsReader() throws IOException{
         Map<Integer, SecretWord> wordsMap = new HashMap<>();
         Integer cont = 0;
-        Object[] wordsAndTips = Files.lines(Paths.get(new File("").getAbsolutePath().concat("\\src\\main\\resources"), "wordsList.txt")).toArray();       
+        Object[] wordsAndTips = Files.lines(Paths.get(new File("").getAbsolutePath().concat("/src/main/resources"), "wordsList.txt")).toArray();
         for (Object wordOrTip : wordsAndTips) {
             String[] parsedLine = ((String) wordOrTip).split(";", 2);
             wordsMap.put(cont++, new SecretWord(parsedLine[0].toUpperCase(), parsedLine[1].replace(";", "")));
