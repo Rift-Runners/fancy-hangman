@@ -1,4 +1,5 @@
 import controller.GameController;
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,6 +21,10 @@ import util.HangmanUtils;
 import util.InputBox;
 import view.GameView;
 
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Created by Guilherme on 12/03/2016.
  */
@@ -36,7 +41,7 @@ public class MainApplication extends Application implements EventHandler<ActionE
         launch(args);
     }
 
-    public void controllerSetUp(){
+    public void controllerSetUp() throws IOException{
         Game game = new Game(new HangmanUtils().randomWord(), playerSetUp());
         GameController gameController = new GameController(game);
         this.gameView = new GameView(gameController);
@@ -132,7 +137,7 @@ public class MainApplication extends Application implements EventHandler<ActionE
         playerLives.setText(String.valueOf(gameView.getGameController().getGame().getPlayer().getAttempts()));
     }
 
-    public void restartGame(){
+    public void restartGame() throws IOException{
         controllerSetUp();
         turnComponentsUpdate();
         imageUpdate();
@@ -159,7 +164,7 @@ public class MainApplication extends Application implements EventHandler<ActionE
     }
 
     @Override
-    public void handle(ActionEvent event) {
+    public void handle(ActionEvent event){
         Button clickedLetter = (Button)event.getSource();
         if(gameView.getGameController().isRunning()) {
             gameView.getGameController().guessLetter(clickedLetter.getText().charAt(0));
@@ -168,7 +173,11 @@ public class MainApplication extends Application implements EventHandler<ActionE
             gameView.guessTurn();
         } else {
             if(new ConfirmBox().display("Game is over", "Want to start a new game?")){
-                restartGame();
+                try {
+                    restartGame();
+                } catch (IOException ex) {
+                    Logger.getLogger(MainApplication.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
     }

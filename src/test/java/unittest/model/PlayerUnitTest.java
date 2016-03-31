@@ -23,6 +23,11 @@ public class PlayerUnitTest {
 
     @Test
     public void testPlayerHasAName(){
+        assertNotNull(player.getName());
+    }
+    
+    @Test
+    public void testPlayerHasTheRightName(){
         assertEquals("William", player.getName());
     }
 

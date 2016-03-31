@@ -1,3 +1,6 @@
 .idea/
 *iws
 target/
+*.iml
+nbproject/
+nb-configuration.xml

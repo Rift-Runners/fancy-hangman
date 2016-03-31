@@ -1,5 +1,6 @@
 package unittest.util;
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,7 @@ public class HangmanUtilsUnitTest {
     private HangmanUtils hangmanUtils;
 
     @Before
-    public void setUp(){
+    public void setUp() throws IOException{
         this.hangmanUtils = new HangmanUtils();
     }
 
@@ -28,6 +29,16 @@ public class HangmanUtilsUnitTest {
     @Test
     public void testRandomizedAWord(){
         assertNotNull(hangmanUtils.randomWord());
+    }
+    
+    @Test
+    public void testMapHasAWord() throws IOException{
+        assertEquals("APPLE", hangmanUtils.wordsReader().get(0).getWord());
+    }
+    
+    @Test
+    public void testMapHasATip() throws IOException{
+        assertEquals("red colored and round-shaped fruit", hangmanUtils.wordsReader().get(0).getTip());
     }
 
     @After
