@@ -16,6 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.Game;
 import model.Player;
+import util.AlertBox;
 import util.ConfirmBox;
 import util.HangmanUtils;
 import util.InputBox;
@@ -88,6 +89,9 @@ public class MainApplication extends Application implements EventHandler<ActionE
             }
         }
         Button tip = new Button("Tip");
+        tip.setOnMouseClicked(event -> {
+            new AlertBox().display("Word Tip", gameView.getGameController().getGame().getSecretWord().getTip());
+        });
         centerLayout.getChildren().addAll(secretWord, lettersLine1,lettersLine2,lettersLine3, tip);
         centerLayout.setAlignment(Pos.CENTER);
 
