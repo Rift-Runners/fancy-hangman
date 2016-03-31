@@ -2,6 +2,7 @@ package unittest.model;
 
 import model.Game;
 import model.Player;
+import model.SecretWord;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,7 +15,7 @@ public class GameUnitTest {
 
     @Before
     public void setUp(){
-        this.game = new Game("APPLE", new Player("William"));
+        this.game = new Game(new SecretWord("apple", "apple tip"), new Player("William"));
     }
 
     @Test
@@ -28,8 +29,13 @@ public class GameUnitTest {
     }
 
     @Test
-    public void testGameHasASecretWord(){
-        assertEquals("APPLE", game.getSecretWord());
+    public void testGameSecretWordHasAWord(){
+        assertEquals("apple", game.getSecretWord().getWord());
+    }
+    
+        @Test
+    public void testGameSecretWordHasATip(){
+        assertEquals("apple tip", game.getSecretWord().getTip());
     }
 
     @After

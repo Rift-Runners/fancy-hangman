@@ -1,5 +1,6 @@
 package unittest.util;
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,7 @@ public class HangmanUtilsUnitTest {
     private HangmanUtils hangmanUtils;
 
     @Before
-    public void setUp(){
+    public void setUp() throws IOException{
         this.hangmanUtils = new HangmanUtils();
     }
 

@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.stream.Stream;
 
 public class HangmanUtils {
 
@@ -29,10 +28,12 @@ public class HangmanUtils {
 
     public Map<Integer, SecretWord> wordsReader() throws IOException{
         Map<Integer, SecretWord> wordsMap = new HashMap<>();
-        int cont = 0;
-        Stream<String> wordsAndTips = Files.lines(Paths.get(new File("").getAbsolutePath().concat("src/main/resources"), "wordsList.txt"));
-        //INSTEAD OF 1, IT NEEDS TO USE THE CONT VARIABLE...
-        wordsAndTips.map(string -> string.split(";", 2)).map(array  -> wordsMap.put(1, new SecretWord(array[0], array[1])));
+        Integer cont = 0;
+        Object[] wordsAndTips = Files.lines(Paths.get(new File("").getAbsolutePath().concat("\\src\\main\\resources"), "wordsList.txt")).toArray();       
+        for (Object wordOrTip : wordsAndTips) {
+            String[] parsedLine = ((String) wordOrTip).split(";", 2);
+            wordsMap.put(cont++, new SecretWord(parsedLine[0], parsedLine[1].replace(";", "")));
+        }
         return wordsMap;
     }
 }
