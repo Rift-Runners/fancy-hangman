@@ -33,3 +33,13 @@ Meaning: Trying to use (most of time) XP as the development technology and a lot
 |rf            | Refactor                                          |
 |fix           | Fix/Hotfix                                        |
 
+---
+
+### Custom words and tips instructions
+
+To add your custom words and its respective tips, you must access the folder [*"src/main/resources"*](https://github.com/matuella/fancy-hangman/tree/master/src/main/resources) and open the file called: **"wordsList.txt"**. After that, you must follow the pattern that the file uses to read a respective word and the tip.<br/>
+**I.e.**: We want to read the words: *"foo"* and *"bar"*. And its tips: *"foo tip"* and *"bar tip"*.
+<pre><code>foo;foo tip;
+bar;bar tip;</pre></code>
+
+And that's it, easy peasy! Also, you can modify the way it "reads" the pattern on the: [*"src/main/java/util/HangmanUtils.java"*](https://github.com/matuella/fancy-hangman/tree/master/src/main/java/util). :+1:
